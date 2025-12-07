@@ -875,7 +875,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Documentation**: [GitHub Wiki](https://github.com/srinureddy7/devlog-backend/wiki)
 - **Issues**: [GitHub Issues](https://github.com/srinureddy7/devlog-backend/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/srinureddy7/devlog-backend/discussions)
-- **Email**: support@example.com
+- **Email**: gumudikhirasindhu1@gmail.com
 
 ## 🚀 Quick Commands Reference
 
@@ -915,4 +915,4 @@ docker-compose down     # Stop services
 
 ---
 
-_Last Updated: January 2025_
+_Last Updated: December 2025_

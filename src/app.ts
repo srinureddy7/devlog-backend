@@ -7,6 +7,7 @@ import logger from "./utils/logger";
 import errorHandler from "./middlewares/errorHandler";
 import { securityMiddleware, xssClean } from "./middlewares/security";
 import { apiLimiter } from "./middlewares/rateLimiter";
+import blogRoutes from "./routes/blogRoutes";
 
 // Routes
 import authRoutes from "./routes/authRoutes";
@@ -74,6 +75,7 @@ class Application {
 
     // API routes
     this.app.use("/api/v1/auth", authRoutes);
+    this.app.use("/api/v1", blogRoutes);
 
     // 404 handler
     this.app.use("*", (req, res) => {

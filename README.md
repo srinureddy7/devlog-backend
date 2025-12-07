@@ -672,7 +672,7 @@ jobs:
 - **Issues**: [GitHub Issues](https://github.com/srinureddy7/devlog-backend/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/srinureddy7/devlog-backend/discussions)
 - **Email**: gumudikhirasindhu1@gmail.com
-- **Twitter**: [@YourTwitterHandle](https://x.com/srinu__reddy)
+- **X**: [@](https://x.com/srinu__reddy)
 - **LinkedIn**: [Your LinkedIn](https://linkedin.com/in/gumudi-khirasindhu-redy)
 
 ## 📄 **License**

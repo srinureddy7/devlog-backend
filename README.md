@@ -11,6 +11,7 @@ A production-ready, scalable backend API for DevLog application built with Node.
 ## 🌟 Features
 
 ### 🛡️ **Security**
+
 - 🔐 JWT Authentication with Access & Refresh Tokens
 - 👥 Role-Based Access Control (RBAC)
 - 🛡️ Helmet.js Security Headers
@@ -21,6 +22,7 @@ A production-ready, scalable backend API for DevLog application built with Node.
 - 🔐 Input Validation & Sanitization
 
 ### ⚡ **Performance**
+
 - 🚀 NodeCache In-Memory Caching
 - 🔄 Database Connection Pooling
 - 📦 Response Compression
@@ -29,6 +31,7 @@ A production-ready, scalable backend API for DevLog application built with Node.
 - ⚡ Efficient Error Handling
 
 ### 📁 **Architecture**
+
 - 🏗️ SOLID Principles Implementation
 - 🎯 Service Layer Pattern
 - 📦 Dependency Injection Ready
@@ -37,6 +40,7 @@ A production-ready, scalable backend API for DevLog application built with Node.
 - 📝 Full TypeScript Support
 
 ### 🛠️ **Developer Experience**
+
 - 🔧 Hot Reload Development
 - 📏 ESLint & Prettier Configuration
 - 🧪 Comprehensive Logging
@@ -198,6 +202,7 @@ CACHE_TTL=600                  # 10 minutes
 ## 📚 API Documentation
 
 ### Base URL
+
 ```
 http://localhost:5000/api/v1
 ```
@@ -205,6 +210,7 @@ http://localhost:5000/api/v1
 ### Authentication Endpoints
 
 #### Register User
+
 ```http
 POST /auth/register
 Content-Type: application/json
@@ -219,6 +225,7 @@ Content-Type: application/json
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -240,6 +247,7 @@ Content-Type: application/json
 ```
 
 #### Login User
+
 ```http
 POST /auth/login
 Content-Type: application/json
@@ -251,28 +259,33 @@ Content-Type: application/json
 ```
 
 #### Get Current User
+
 ```http
 GET /auth/me
 Authorization: Bearer {accessToken}
 ```
 
 #### Refresh Token
+
 ```http
 POST /auth/refresh-token
 ```
 
 #### Logout
+
 ```http
 POST /auth/logout
 Authorization: Bearer {accessToken}
 ```
 
 ### Health Check
+
 ```http
 GET /health
 ```
 
 **Response:**
+
 ```json
 {
   "status": "success",
@@ -325,6 +338,7 @@ This project uses:
 - **TypeScript** for type checking
 
 Configuration files:
+
 - `.eslintrc.json` - ESLint rules
 - `tsconfig.json` - TypeScript configuration
 - `.prettierrc` - Prettier configuration (optional)
@@ -332,6 +346,7 @@ Configuration files:
 ## 🧪 Testing
 
 ### Test Structure
+
 ```
 src/
 ├── __tests__/
@@ -368,7 +383,7 @@ npm test -- --coverage
 1. Create `docker-compose.yml`:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   mongodb:
@@ -568,7 +583,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_cache_bypass $http_upgrade;
-        
+
         # Timeouts
         proxy_connect_timeout 60s;
         proxy_send_timeout 60s;
@@ -586,6 +601,7 @@ server {
 ```
 
 Enable the site:
+
 ```bash
 sudo ln -s /etc/nginx/sites-available/devlog /etc/nginx/sites-enabled/
 sudo nginx -t
@@ -619,20 +635,20 @@ Logs are stored in the `logs/` directory:
 ### Logging Example
 
 ```typescript
-import logger from './utils/logger';
+import logger from "./utils/logger";
 
 // Different log levels
-logger.error('Database connection failed');
-logger.warn('Rate limit exceeded');
-logger.info('User registered successfully');
-logger.debug('Cache hit for user:123');
+logger.error("Database connection failed");
+logger.warn("Rate limit exceeded");
+logger.info("User registered successfully");
+logger.debug("Cache hit for user:123");
 
 // Structured logging
-logger.info('API Request', {
+logger.info("API Request", {
   method: req.method,
   path: req.path,
   duration: 150, // ms
-  status: res.statusCode
+  status: res.statusCode,
 });
 ```
 
@@ -657,14 +673,14 @@ netstat -an | grep :5000
 
 ### Common Issues
 
-| Issue | Solution |
-|-------|----------|
-| **MongoDB Connection Failed** | Check if MongoDB is running: `sudo systemctl status mongodb` |
-| **Port 5000 Already in Use** | Find process: `lsof -i :5000` and kill: `kill -9 <PID>` |
-| **JWT Token Invalid** | Verify `JWT_SECRET` is set correctly in `.env` |
+| Issue                             | Solution                                                                         |
+| --------------------------------- | -------------------------------------------------------------------------------- |
+| **MongoDB Connection Failed**     | Check if MongoDB is running: `sudo systemctl status mongodb`                     |
+| **Port 5000 Already in Use**      | Find process: `lsof -i :5000` and kill: `kill -9 <PID>`                          |
+| **JWT Token Invalid**             | Verify `JWT_SECRET` is set correctly in `.env`                                   |
 | **TypeScript Compilation Errors** | Clear cache: `npm run clean` and reinstall: `rm -rf node_modules && npm install` |
-| **CORS Errors** | Check `CORS_ORIGIN` in `.env` matches frontend URL |
-| **Rate Limiting Issues** | Adjust `RATE_LIMIT_MAX_REQUESTS` in `.env` |
+| **CORS Errors**                   | Check `CORS_ORIGIN` in `.env` matches frontend URL                               |
+| **Rate Limiting Issues**          | Adjust `RATE_LIMIT_MAX_REQUESTS` in `.env`                                       |
 
 ### Debug Mode
 
@@ -698,20 +714,22 @@ mongo devlog --eval "db.dropDatabase()"
 ### Adding New Modules
 
 1. **Create Model:**
+
 ```typescript
 // src/models/Post.ts
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const PostSchema = new Schema({
   title: String,
   content: String,
-  author: { type: Schema.Types.ObjectId, ref: 'User' }
+  author: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-export default model('Post', PostSchema);
+export default model("Post", PostSchema);
 ```
 
 2. **Create Service:**
+
 ```typescript
 // src/services/postService.ts
 class PostService {
@@ -724,6 +742,7 @@ export default new PostService();
 ```
 
 3. **Create Controller:**
+
 ```typescript
 // src/controllers/postController.ts
 class PostController {
@@ -736,20 +755,22 @@ export default new PostController();
 ```
 
 4. **Create Routes:**
+
 ```typescript
 // src/routes/postRoutes.ts
-import { Router } from 'express';
-import PostController from '../controllers/postController';
+import { Router } from "express";
+import PostController from "../controllers/postController";
 
 const router = Router();
-router.post('/', PostController.create);
+router.post("/", PostController.create);
 export default router;
 ```
 
 5. **Register Routes in app.ts:**
+
 ```typescript
-import postRoutes from './routes/postRoutes';
-this.app.use('/api/v1/posts', postRoutes);
+import postRoutes from "./routes/postRoutes";
+this.app.use("/api/v1/posts", postRoutes);
 ```
 
 ## 📝 API Best Practices
@@ -757,6 +778,7 @@ this.app.use('/api/v1/posts', postRoutes);
 ### Request/Response Format
 
 **Request:**
+
 ```json
 {
   "field": "value",
@@ -767,16 +789,20 @@ this.app.use('/api/v1/posts', postRoutes);
 ```
 
 **Success Response:**
+
 ```json
 {
   "success": true,
   "message": "Operation successful",
-  "data": { /* response data */ },
+  "data": {
+    /* response data */
+  },
   "timestamp": "2024-01-01T00:00:00.000Z"
 }
 ```
 
 **Error Response:**
+
 ```json
 {
   "success": false,
@@ -810,7 +836,7 @@ this.app.use('/api/v1/posts', postRoutes);
 We welcome contributions! Please follow these steps:
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/your-username/devlog-backend.git`
+2. **Clone** your fork: `git clone https://github.com/srinureddy7/devlog-backend.git`
 3. **Create** a feature branch: `git checkout -b feature/amazing-feature`
 4. **Commit** changes: `git commit -m 'Add amazing feature'`
 5. **Push** to branch: `git push origin feature/amazing-feature`
@@ -846,9 +872,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Documentation**: [GitHub Wiki](https://github.com/yourusername/devlog-backend/wiki)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/devlog-backend/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/devlog-backend/discussions)
+- **Documentation**: [GitHub Wiki](https://github.com/srinureddy7/devlog-backend/wiki)
+- **Issues**: [GitHub Issues](https://github.com/srinureddy7/devlog-backend/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/srinureddy7/devlog-backend/discussions)
 - **Email**: support@example.com
 
 ## 🚀 Quick Commands Reference
@@ -881,11 +907,12 @@ docker-compose down     # Stop services
 
 ---
 
-**Made with ❤️ by the DevLog Team**
+**Made with ❤️ by Srinu Reddy**
 
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/devlog-backend?style=social)](https://github.com/yourusername/devlog-backend)
-[![GitHub Forks](https://img.shields.io/github/forks/yourusername/devlog-backend?style=social)](https://github.com/yourusername/devlog-backend)
-[![GitHub Issues](https://img.shields.io/github/issues/yourusername/devlog-backend)](https://github.com/yourusername/devlog-backend/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/srinureddy7/devlog-backend?style=social)](https://github.com/srinureddy7/devlog-backend)
+[![GitHub Forks](https://img.shields.io/github/forks/srinureddy7/devlog-backend?style=social)](https://github.com/srinureddy7/devlog-backend)
+[![GitHub Issues](https://img.shields.io/github/issues/srinureddy7/devlog-backend)](https://github.com/srinureddy7/devlog-backend/issues)
 
 ---
-*Last Updated: January 2024*
+
+_Last Updated: January 2025_
